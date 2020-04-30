@@ -103,7 +103,8 @@ export default {
       oldPassword: 'Old Password',
       newPassword: 'New Password',
       confirmPassword: 'Confirm Again',
-      social: 'Third Party Account'
+      social: 'Third Party Account',
+      dataPermission: 'Data Permission'
     },
     role: {
       roleName: 'RoleName',
@@ -125,6 +126,16 @@ export default {
       deptName: 'DeptName',
       parentId: 'Parent',
       orderNum: 'Order'
+    },
+    client: {
+      clientId: 'clientId',
+      clientSecret: 'clientSecret',
+      scope: 'scope',
+      authorizedGrantTypes: 'authorizedGrantTypes',
+      accessTokenValidity: 'accessTokenValidity',
+      refreshTokenValidity: 'refreshTokenValidity',
+      webServerRedirectUri: 'webServerRedirectUri',
+      autoapprove: 'autoapprove'
     },
     systemLog: {
       username: 'UserName',
@@ -162,8 +173,29 @@ export default {
         remark: 'Remark',
         dataRows: 'DataRows',
         createTime: 'CreateTime',
-        updateTime: 'UpdateTime'
+        updateTime: 'UpdateTime',
+        datasource: 'DataSource'
       }
+    },
+    job: {
+      beanName: 'BeanName',
+      methodName: 'MethodName',
+      params: 'Params',
+      cronExpression: 'CronExpression',
+      status: 'Status',
+      createTime: 'CreateTime',
+      executeTime: 'ExecuteTime',
+      error: 'Error',
+      time: 'Duration',
+      remark: 'Remark',
+      add: 'Create',
+      delete: 'Delete',
+      resume: 'Resume',
+      pause: 'Pause',
+      run: 'Run once',
+      fail: 'Fail',
+      success: 'Success',
+      normal: 'Normal'
     },
     eximport: {
       field1: 'Field 1',
@@ -172,6 +204,85 @@ export default {
       createTime: 'Import Time'
     },
     check: 'Examine and Verify',
+    datapermissionTest: {
+      field1: 'Field 1',
+      field2: 'Field 2',
+      field3: 'Field 3',
+      field4: 'Field 4',
+      createTime: 'CreateTime',
+      tips: 'Data permission test, different users see different data'
+    },
+    routeUser: {
+      tips: 'Gateway management user account list, permissions are divided into ordinary users (user) and administrative users (admin)',
+      username: 'UserName',
+      perm: 'Permissions',
+      createTime: 'CreateTime',
+      password: 'Password'
+    },
+    routeLog: {
+      tips: 'Gateway forwards request logs. These are requests that have not been intercepted by traffic limiting or blacklisting rules.',
+      ip: 'Request IP',
+      targetServer: 'Target Server',
+      requestMethod: 'Request Method',
+      requestTime: 'Request Time',
+      requestUri: 'Request URI',
+      targetUri: 'Target URI',
+      location: 'Location'
+    },
+    rateLimitRule: {
+      tips: 'Define gateway traffic restriction rules. Requests that do not meet the rules will be intercepted. The interception records can be viewed through the traffic restriction log.',
+      requestUri: 'Request URI',
+      requestMethod: 'Request Method',
+      limitFrom: 'Limit From',
+      allTheTime: 'all the time',
+      limitTo: 'Limit To',
+      count: 'Count',
+      period: 'Period (Seconds)',
+      createTime: 'CreateTime',
+      nst: 'Wildcards are not supported',
+      status: 'Status',
+      timeLimit: 'Time Limit',
+      timeRange: 'Time Range'
+    },
+    rateLimitLog: {
+      tips: 'Show request logs intercepted by traffic limiting rules',
+      requestUri: 'Request URI',
+      requestMethod: 'Request Method',
+      createTime: 'Request Time',
+      ip: 'Request IP',
+      location: 'Location'
+    },
+    blackList: {
+      tips: 'Define gateway request blacklist',
+      requestUri: 'Request URI',
+      requestMethod: 'Request Method',
+      createTime: 'CreateTime',
+      ip: 'Request IP',
+      location: 'Location',
+      allIp: 'unlimited IP',
+      limitFrom: 'Limit From',
+      allTheTime: 'all the time',
+      limitTo: 'Limit To',
+      status: 'Status',
+      st: 'Wildcard support',
+      timeLimit: 'Time Limit',
+      timeRange: 'Time Range'
+    },
+    blockLog: {
+      tips: 'Support wildcards to display request logs intercepted by blacklist rules. Requests that do not meet the rules will be intercepted. The interception records can be viewed through the blacklist logs.',
+      requestUri: 'Request URI',
+      requestMethod: 'Request Method',
+      createTime: 'Request Time',
+      ip: 'Request IP',
+      location: 'Location'
+    },
+    routeLogin: {
+      needLogin: 'The operation of the gateway management module requires authentication, ',
+      toLogin: ' Click to login',
+      tips: 'The function of this module needs to be enhanced in advance. For the method of opening, please refer to the document: ',
+      title: 'FEBS Gateway Certification',
+      login: 'Login'
+    },
     refresh: 'Refresh',
     operation: 'Operation',
     search: 'Search',
@@ -240,8 +351,13 @@ export default {
     confirmRestPassword: 'Make sure to reset the selected user password?',
     resetPasswordSuccess: 'The selected user password reset has been reset to 1234qwer',
     getCodeImageFailed: 'Failed to get image verification code',
-    tooManyRequest: 'Getting the authentication code is too frequent. Please try again in 1 minute',
-    clientOriginSecret: 'The original password of the client is: '
+    tooManyRequest: 'Getting the authentication code is too frequent. Please try again later',
+    clientOriginSecret: 'The original password of the client is: ',
+    sameRule: 'The same rule already exists',
+    createTips: 'Please fill in the relevant information in the form',
+    cronInvalid: 'Cron expression is invalid',
+    executeSuccess: 'Success',
+    executeFail: 'Fail'
   },
   rules: {
     require: 'Can\'t be empty',
@@ -278,7 +394,10 @@ export default {
       c: 'Authentication server resource server separation, easy to expand',
       d: 'Front-end separation architecture for increased efficiency',
       e: 'Integrate multiple monitoring to escort microservices',
-      f: 'Provide detailed documentation and teach you how to build it'
+      f: 'Provide detailed documentation and teach you how to build it',
+      g: 'Build a highly available microservices cluster by K8S',
+      h: 'Integrated RocketMQ, TX-LCN, Seata distributed transaction control',
+      i: 'Data permissions, social login...'
     },
     view: 'Detail',
     tips: 'Tips',
@@ -340,6 +459,8 @@ export default {
       yes: 'Having Car',
       no: 'NO'
     },
+    open: 'Open',
+    close: 'Close',
     sex: {
       male: 'Male',
       female: 'Female',

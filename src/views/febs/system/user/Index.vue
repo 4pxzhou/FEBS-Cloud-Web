@@ -97,7 +97,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <pagination v-show="total>0" :total="total" :page.sync="pagination.num" :limit.sync="pagination.size" @pagination="fetch" />
+    <pagination v-show="total>0" :total="total" :page.sync="pagination.num" :limit.sync="pagination.size" @pagination="search" />
     <user-edit
       ref="edit"
       :dialog-visible="dialog.isVisible"
@@ -311,9 +311,12 @@ export default {
         roleId = row.roleId.split(',')
         row.roleId = roleId
       }
-      this.$refs.edit.setUser(row)
-      this.dialog.title = this.$t('common.edit')
-      this.dialog.isVisible = true
+      this.$get(`system/user/${row.userId}`).then((r) => {
+        row.deptIds = r.data.data
+        this.$refs.edit.setUser(row)
+        this.dialog.title = this.$t('common.edit')
+        this.dialog.isVisible = true
+      })
     },
     fetch(params = {}) {
       params.pageSize = this.pagination.size

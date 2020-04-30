@@ -103,7 +103,8 @@ export default {
       oldPassword: '旧密码',
       newPassword: '新密码',
       confirmPassword: '再次确认',
-      social: '第三方账号'
+      social: '第三方账号',
+      dataPermission: '数据权限'
     },
     role: {
       roleName: '角色名称',
@@ -125,6 +126,16 @@ export default {
       deptName: '部门名称',
       parentId: '上级部门',
       orderNum: '排序'
+    },
+    client: {
+      clientId: '客户端ID',
+      clientSecret: '客户端秘钥',
+      scope: '范围',
+      authorizedGrantTypes: '认证模式',
+      accessTokenValidity: '访问令牌有效期（秒）',
+      refreshTokenValidity: '刷新令牌有效期（秒）',
+      webServerRedirectUri: '重定向地址',
+      autoapprove: '自动授权'
     },
     systemLog: {
       username: '操作人',
@@ -162,8 +173,29 @@ export default {
         remark: '备注',
         dataRows: '数据量（行）',
         createTime: '创建时间',
-        updateTime: '更新时间'
+        updateTime: '更新时间',
+        datasource: '数据库'
       }
+    },
+    job: {
+      beanName: 'Bean名称',
+      methodName: '方法名称',
+      params: '方法参数',
+      cronExpression: 'Cron表达式',
+      status: '状态',
+      createTime: '创建时间',
+      executeTime: '执行时间',
+      error: '错误信息',
+      time: '耗时',
+      remark: '备注',
+      add: '新增',
+      delete: '删除',
+      resume: '恢复',
+      pause: '暂停',
+      run: '运行一次',
+      fail: '失败',
+      success: '成功',
+      normal: '正常'
     },
     eximport: {
       field1: '字段1',
@@ -172,6 +204,85 @@ export default {
       createTime: '导入时间'
     },
     check: '审核',
+    datapermissionTest: {
+      field1: '字段1',
+      field2: '字段2',
+      field3: '字段3',
+      field4: '字段4',
+      createTime: '创建时间',
+      tips: '数据权限测试，不同用户看到的数据不一样'
+    },
+    routeUser: {
+      tips: '网关管理用户账号列表，权限分为普通用户（user）和管理用户（admin）',
+      username: '用户名',
+      perm: '权限',
+      createTime: '创建时间',
+      password: '密码'
+    },
+    routeLog: {
+      tips: '网关转发请求日志，这些为未被限流或黑名单规则拦截的请求',
+      ip: '请求IP',
+      targetServer: '目标服务',
+      requestMethod: '请求方法',
+      requestTime: '请求时间',
+      requestUri: '请求URI',
+      targetUri: '目标URI',
+      location: '请求地址'
+    },
+    rateLimitRule: {
+      tips: '定义网关限流规则，不符合规则的请求将被拦截，拦截记录可以通过限流日志查看',
+      requestUri: '请求URI',
+      requestMethod: '请求方法',
+      limitFrom: '限制时间起',
+      allTheTime: '所有时间',
+      limitTo: '限制时间止',
+      count: '请求次数',
+      period: '时间周期（秒）',
+      createTime: '创建时间',
+      nst: '不支持通配符',
+      status: '规则状态',
+      timeLimit: '时间限制',
+      timeRange: '时间范围'
+    },
+    rateLimitLog: {
+      tips: '展示被限流规则拦截的请求日志',
+      requestUri: '请求URI',
+      requestMethod: '请求方法',
+      createTime: '请求时间',
+      ip: '请求IP',
+      location: '请求地址'
+    },
+    blackList: {
+      tips: '定义网关请求黑名单',
+      requestUri: '请求URI',
+      requestMethod: '请求方法',
+      createTime: '创建时间',
+      ip: '请求IP',
+      location: '请求地址',
+      allIp: '所有IP',
+      limitFrom: '限制时间起',
+      allTheTime: '所有时间',
+      limitTo: '限制时间止',
+      status: '规则状态',
+      st: '支持通配符',
+      timeLimit: '时间限制',
+      timeRange: '时间范围'
+    },
+    blockLog: {
+      tips: '展示被限流规则拦截的请求日志',
+      requestUri: '请求URI',
+      requestMethod: '请求方法',
+      createTime: '请求时间',
+      ip: '请求IP',
+      location: '请求地址'
+    },
+    routeLogin: {
+      needLogin: '网关管理模块操作需要认证，',
+      toLogin: '点击认证',
+      tips: '该模块功能需要预先开启网关增强，开启方法请参考文档：',
+      title: 'FEBS 网关管理认证',
+      login: '认证'
+    },
     refresh: '刷新',
     operation: '操作',
     search: '搜索',
@@ -240,8 +351,13 @@ export default {
     confirmRestPassword: '确定重置所选用户密码？',
     resetPasswordSuccess: '所选用户密码重置已被重置为1234qwer',
     getCodeImageFailed: '获取图形验证码失败',
-    tooManyRequest: '获取验证码过于频繁，请1分钟后再试',
-    clientOriginSecret: '该客户端原始密码为：'
+    tooManyRequest: '获取验证码过于频繁，请稍后再试',
+    clientOriginSecret: '该客户端秘钥值：',
+    sameRule: '已存在相同的规则',
+    createTips: '请在表单中填写相关信息',
+    cronInvalid: 'Cron表达式不合法',
+    executeSuccess: '成功',
+    executeFail: '失败'
   },
   rules: {
     require: '不能为空',
@@ -278,7 +394,10 @@ export default {
       c: '认证服务器资源服务器分离，方便拓展',
       d: '前后端分离架构，提高软件开发效率',
       e: '集成多种监控，为微服务保驾护航',
-      f: '提供详细的文档，手把手教你从零搭建到部署'
+      f: '提供详细的文档，手把手教你从零搭建到部署',
+      g: 'Kubernetes搭建高可用微服务集群',
+      h: '整合RocketMQ、TX-LCN、Seata分布式事务控制',
+      i: '数据权限，社交登录，开箱即用...'
     },
     view: '查看',
     tips: '提示',
@@ -337,6 +456,8 @@ export default {
       yes: '有车',
       no: '无'
     },
+    open: '开启',
+    close: '关闭',
     sex: {
       male: '男性',
       female: '女性',

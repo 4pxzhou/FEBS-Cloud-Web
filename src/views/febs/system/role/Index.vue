@@ -59,7 +59,7 @@
               </template>
             </el-table-column>
           </el-table>
-          <pagination v-show="total>0" :total="total" :page.sync="pagination.num" :limit.sync="pagination.size" @pagination="fetch" />
+          <pagination v-show="total>0" :total="total" :page.sync="pagination.num" :limit.sync="pagination.size" @pagination="search" />
         </div>
       </el-col>
       <el-col :xs="24" :sm="10">
@@ -252,6 +252,10 @@ export default {
     },
     add() {
       this.resetForm()
+      this.$message({
+        message: this.$t('tips.createTips'),
+        type: 'info'
+      })
     },
     sortChange(val) {
       this.sort.field = val.prop

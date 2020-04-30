@@ -1,23 +1,21 @@
 <template>
   <i-frame
-    :src="kibanaUrl"
+    :src="url"
     @refresh="refresh"
   />
 </template>
 <script>
 import iFrame from '@/components/iFrame'
-import { kibanaUrl } from '@/settings'
-
 export default {
   components: { iFrame },
   data() {
     return {
-      kibanaUrl: kibanaUrl
+      url: 'https://mrbird.cc'
     }
   },
   methods: {
     refresh(u) {
-      this.kibanaUrl = u
+      this.url = u
     }
   }
 }
