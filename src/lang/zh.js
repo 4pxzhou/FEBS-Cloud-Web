@@ -14,7 +14,7 @@ export default {
     deleteCache: '清除缓存'
   },
   login: {
-    title: 'FEBS 系统登录',
+    title: 'DCZHW 系统登录',
     logIn: '立即登录',
     username: '账号',
     password: '密码',
@@ -31,6 +31,62 @@ export default {
     github: '项目地址'
   },
   table: {
+    accusation: {
+      mid: '会员ID',
+      hmid: '被举报人的会员ID',
+      umid: '举报人的会员ID',
+      hcontact: '被举报人的联系方式',
+      ucontact: '举报人的联系方式',
+      img1: '举报图片1',
+      img2: '举报图片2',
+      img3: '举报图片3',
+      img4: '举报图片4',
+      img5: '举报图片5',
+      status: '举报状态'
+    },
+    order: {
+      paytype: '支付方式',
+      orderid: '外部订单号',
+      mid: '会员ID',
+      price: '价格',
+      otype: '订单类型',
+      status: '订单状态',
+      paytime: '交易时间'
+    },
+    member: {
+      cellphone: '手机号',
+      headimg: '头像',
+      nickname: '昵称',
+      name: '姓名',
+      sex: '性别',
+      idcard: '身份证号',
+      frontcardphoto: '身份证正面照',
+      height: '体重(KG)',
+      weight: '身高(CM)',
+      nativeplace: '籍贯',
+      workcity: '工作城市',
+      status: '会员状态',
+      isverify: '审核状态',
+      isdivorce: '婚姻状态',
+      haschildern: '是否有娃',
+      hasroom: '是否有房',
+      hascar: '是否有车',
+      marryad: '征婚广告',
+      password: '会员密码'
+    },
+    price: {
+      name: '费用名称',
+      price: '费用数目',
+      ptype: '费用类型'
+    },
+    question: {
+      question: '问题描述',
+      answera: 'A',
+      answerb: 'B',
+      answerc: 'C',
+      answerd: 'D',
+      rightanswer: '正确答案'
+    },
     user: {
       username: '用户名',
       password: '密码',
@@ -115,6 +171,7 @@ export default {
       field3: '字段3',
       createTime: '导入时间'
     },
+    check: '审核',
     refresh: '刷新',
     operation: '操作',
     search: '搜索',
@@ -142,7 +199,7 @@ export default {
     sidebarLogo: '侧边栏 Logo'
   },
   system: {
-    title: 'FEBS 权限系统'
+    title: 'DCZHW 权限系统'
   },
   tips: {
     usernameShouldNotBeEmpty: '用户名不能为空',
@@ -152,6 +209,10 @@ export default {
     loginFail: '登录失败',
     defaultPassword: '用户的默认密码为1234qwer',
     getDataFail: '获取数据失败',
+    checkSuccess: '审核通过',
+    forbidSuccess: '禁用成功',
+    enableSuccess: '启用成功',
+    checkFail: '审核不通过',
     createSuccess: '新增成功',
     updateSuccess: '修改成功',
     deleteSuccess: '删除成功',
@@ -167,7 +228,7 @@ export default {
     onlyChooseOne: '只能选择一个节点作为父节点',
     noNodeSelected: '请先选择节点',
     confirmDeleteNode: '选中节点及其子结点将被永久删除, 是否继续？',
-    iframeGrant: '用户名：FEBS 密码：123456',
+    iframeGrant: '用户名：DCZHW 密码：123456',
     notEqual: '两次输入不一致',
     oldPasswordIncorrect: '原密码不正确',
     uploadSuccess: '上传成功',
@@ -184,11 +245,15 @@ export default {
   },
   rules: {
     require: '不能为空',
+    range1to1: '只允许输入 1 个字符',
     range2to10: '长度在 2 到 10 个字符',
     range3to10: '长度在 3 到 10 个字符',
     range3to20: '长度在 3 到 20 个字符',
     range4to10: '长度在 4 到 10 个字符',
     range6to20: '长度在 6 到 20 个字符',
+    range1to20: '长度在 1 到 20 个字符',
+    range1to50: '长度在 1 到 50 个字符',
+    range5to255: '长度在 5 到 255 个字符',
     email: '请输入正确的邮箱地址',
     mobile: '请输入合法的手机号',
     usernameExist: '该用户名已存在',
@@ -200,7 +265,10 @@ export default {
     noMoreThan50: '长度不能超过50个字符',
     noMoreThan100: '长度不能超过100个字符',
     invalidInteger: '请输入大于零的整数',
-    invalidURL: '不是有效的URL'
+    invalidURL: '不是有效的URL',
+    pricenameExist: '费用名称已存在',
+    pricenumber: '必须为数字，最大99999',
+    questionExist: '该问题已经存在'
   },
   common: {
     system: '分布式微服务权限系统',
@@ -216,15 +284,69 @@ export default {
     tips: '提示',
     clear: '清除',
     confirm: '确定',
+    processing: '处理中',
+    done: '完结',
     cancel: '取消',
+    adopt: '通过',
+    notpass: '不通过',
     add: '新增',
     edit: '修改',
+    check: '审核',
+    forbid: '禁用',
     yes: '是',
     no: '否',
+    isverify: {
+      tobeaudited: '待审核',
+      pass: '通过',
+      notpass: '不通过'
+    },
+    accusation: {
+      begin: '开启',
+      end: '完结'
+    },
+    otype: {
+      getinfo: '获取个人信息费',
+      credit: '诚信保证金'
+    },
+    paytype: {
+      wechat: '微信支付',
+      zfb: '支付宝支付'
+    },
+    ptype: {
+      one: '获取联系方式',
+      two: '诚信保证金',
+      three: '未知'
+    },
+    memberStatus: {
+      yes: '未禁用',
+      no: '禁用'
+    },
+    divorce: {
+      yes: '离异',
+      no: '未婚'
+    },
+    hasChildern: {
+      yes: '有娃',
+      no: '无'
+    },
+    hasRoom: {
+      yes: '有房',
+      no: '无'
+    },
+    hasCar: {
+      yes: '有车',
+      no: '无'
+    },
     sex: {
       male: '男性',
       female: '女性',
       secret: '保密'
+    },
+    ostatus: {
+      unpaid: '未支付',
+      paid: '已支付',
+      refunded: '已退款',
+      cancelled: '已取消'
     },
     status: {
       valid: '有效',

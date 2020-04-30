@@ -17,7 +17,8 @@ const constRouter = [
     children: [
       {
         path: '/redirect/:path*',
-        component: () => import('@/views/redirect/index')
+        component: () => import('@/views/redirect/index'),
+        meta: { keepAlive: true } // 不需要缓存
       }
     ]
   },
@@ -80,6 +81,8 @@ const constRouter = [
 
 const router = new Router({
   scrollBehavior: () => ({ y: 0 }),
+  // 过滤掉#号
+  // mode: 'history',
   routes: constRouter
 })
 
@@ -131,6 +134,7 @@ router.afterEach(() => {
 function go(to, next) {
   asyncRouter = filterAsyncRouter(asyncRouter)
   router.addRoutes(asyncRouter)
+  to.meta.keepAlive = false
   next({ ...to, replace: true })
 }
 

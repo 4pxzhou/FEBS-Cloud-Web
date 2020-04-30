@@ -94,3 +94,7 @@ export function isArray(arg) {
 export function isIntegerGreaterThanZero(arg) {
   return /(^[1-9]\d*$)/.test(arg)
 }
+
+export function is5Integer(arg) {
+  return /^[1-9]\d{0,5}$/.test(arg)
+}

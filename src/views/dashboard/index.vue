@@ -61,7 +61,7 @@
       <el-col :xs="24" :sm="12">
         <div class="app-container project-wrapper">
           <div class="project-header">
-            <el-link type="primary" href="https://github.com/wuyouzhuguli?tab=repositories" target="_blank" style="float: right;">{{ $t('common.allProject') }}</el-link>
+            <el-link type="primary" href="https://github.com/4pxzhou?tab=repositories" target="_blank" style="float: right;">{{ $t('common.allProject') }}</el-link>
           </div>
           <table>
             <tr>
@@ -247,7 +247,7 @@ export default {
         for (let i = 10; i >= 0; i--) {
           const time = parseTime(new Date(new Date().getTime() - 24 * 60 * 60 * 1000 * i), '{m}-{d}')
           let contain = false
-          for (const o of data.lastTenVisitCount) {
+          for (var o of data.lastTenVisitCount) {
             if (o.days === time) {
               contain = true
               tenVisitCount.push(o.count)
@@ -262,7 +262,7 @@ export default {
         for (let i = 10; i >= 0; i--) {
           const time = parseTime(new Date(new Date().getTime() - 24 * 60 * 60 * 1000 * i), '{m}-{d}')
           let contain = false
-          for (const o of data.lastTenUserVisitCount) {
+          for (o of data.lastTenUserVisitCount) {
             if (o.days === time) {
               contain = true
               tenUserVisitCount.push(o.count)

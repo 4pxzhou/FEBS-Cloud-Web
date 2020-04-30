@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="form" :model="p" :rules="rules" label-position="right" label-width="80px" class="form">
+  <el-form ref="form" :model="p" :rules="rules" label-position="right" label-width="90px" class="form">
     <el-form-item :label="$t('table.user.oldPassword')" prop="oldPassword">
       <el-input v-model="p.oldPassword" type="password" />
     </el-form-item>

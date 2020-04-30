@@ -50,6 +50,7 @@
                   :clear-value-text="$t('common.clear')"
                   placeholder=" "
                   style="width:100%"
+                  :max-height="200"
                 />
               </el-form-item>
               <el-form-item :label="$t('table.menu.menuName')" prop="menuName">

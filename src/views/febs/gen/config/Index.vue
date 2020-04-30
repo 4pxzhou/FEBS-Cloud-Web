@@ -58,27 +58,27 @@ export default {
         ],
         entityPackage: [
           { required: true, message: this.$t('rules.require'), trigger: 'blur' },
-          { max: 20, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
+          { max: 50, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
         ],
         mapperPackage: [
           { required: true, message: this.$t('rules.require'), trigger: 'blur' },
-          { max: 20, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
+          { max: 50, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
         ],
         mapperXmlPackage: [
           { required: true, message: this.$t('rules.require'), trigger: 'blur' },
-          { max: 20, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
+          { max: 50, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
         ],
         servicePackage: [
           { required: true, message: this.$t('rules.require'), trigger: 'blur' },
-          { max: 20, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
+          { max: 50, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
         ],
         serviceImplPackage: [
           { required: true, message: this.$t('rules.require'), trigger: 'blur' },
-          { max: 20, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
+          { max: 50, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
         ],
         controllerPackage: [
           { required: true, message: this.$t('rules.require'), trigger: 'blur' },
-          { max: 20, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
+          { max: 50, message: this.$t('rules.noMoreThan20'), trigger: 'blur' }
         ],
         trimValue: [
           { validator: (rule, value, callback) => {
